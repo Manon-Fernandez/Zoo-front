@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import {MatToolbar} from "@angular/material/toolbar";
+import {MatToolbar, MatToolbarRow} from "@angular/material/toolbar";
 import {MatButton} from "@angular/material/button";
 import {AsyncPipe, NgIf} from "@angular/common";
 import {RouterLink, RouterLinkActive} from "@angular/router";
-import {MatListItem} from "@angular/material/list";
+import {MatListItem, MatNavList} from "@angular/material/list";
 import {map, Observable, shareReplay} from "rxjs";
 import {BreakpointObserver, Breakpoints, BreakpointState} from "@angular/cdk/layout";
 import {AuthService} from "../../services/auth/auth.service";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-header',
@@ -16,9 +17,12 @@ import {AuthService} from "../../services/auth/auth.service";
     MatButton,
     NgIf,
     RouterLink,
+    MatIcon,
+    MatToolbarRow,
     RouterLinkActive,
     MatListItem,
-    AsyncPipe
+    AsyncPipe,
+    MatNavList
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
