@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForOf, NgIf} from "@angular/common";
-import {Router} from "@angular/router";
 import {Avis, Status} from "../../models/Avis.model";
 import {AvisService} from "../../services/avis/avis.service";
 import {Service} from "../../models/Service.model";
@@ -9,7 +8,7 @@ import {HabitatService} from "../../services/habitat/habitat.service";
 import {ZooServiceService} from "../../services/zooService/zoo-service.service";
 import {AvisPopinComponent} from "../avis-popin/avis-popin.component";
 import {ToastService, ToastType} from "../../services/toast/toast.service";
-import {MatCardContent, MatCardHeader} from "@angular/material/card";
+import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
 import {MatButton} from "@angular/material/button";
 import {MatDialog} from "@angular/material/dialog";
 
@@ -18,9 +17,12 @@ import {MatDialog} from "@angular/material/dialog";
   standalone: true,
   imports: [
     NgForOf,
+    MatCard,
     MatCardHeader,
+    MatCardTitle,
     MatCardContent,
     NgIf,
+    NgForOf,
     MatButton
   ],
   templateUrl: './home.component.html',
@@ -36,8 +38,7 @@ export class HomeComponent implements OnInit{
               private zooService : ZooServiceService,
               private habitatService : HabitatService,
               public dialog : MatDialog,
-              private toastService : ToastService,
-              private router : Router) {
+              private toastService : ToastService) {
     this.avisList = [];
     this.service = [];
     this.habitat = [];

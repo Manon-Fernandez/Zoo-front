@@ -1,16 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 import {Habitat} from "../../models/Habitat.model";
 import {HabitatService} from "../../services/habitat/habitat.service";
-import {DetailPopinComponent} from "../detail-popin/detail-popin.component";
 import {MatButton} from "@angular/material/button";
-import {MatCardActions, MatCardHeader} from "@angular/material/card";
+import {MatCard, MatCardActions, MatCardHeader, MatCardTitle} from "@angular/material/card";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-habitat',
   standalone: true,
   imports: [
+    MatCard,
     MatButton,
     MatCardHeader,
+    MatCardTitle,
     MatCardActions
   ],
   templateUrl: './habitat.component.html',

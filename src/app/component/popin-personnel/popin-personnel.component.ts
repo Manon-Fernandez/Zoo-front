@@ -1,12 +1,11 @@
 import {Component, EventEmitter, Inject, Output} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {MatFormField} from "@angular/material/form-field";
+import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatButton} from "@angular/material/button";
 import {Mode} from "../admin-dashboard/admin-dashboard.component";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {AuthService} from "../../services/auth/auth.service";
-import {THREE} from "@angular/cdk/keycodes";
 import {UtilisateurCreate} from "../../models/Utilisateur.model";
 
 @Component({
@@ -15,6 +14,7 @@ import {UtilisateurCreate} from "../../models/Utilisateur.model";
   imports: [
     ReactiveFormsModule,
     MatFormField,
+    MatLabel,
     MatInput,
     MatButton
   ],

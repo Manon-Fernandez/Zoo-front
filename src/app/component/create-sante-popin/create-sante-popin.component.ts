@@ -7,11 +7,13 @@ import {Mode} from "../admin-dashboard/admin-dashboard.component";
 import {SanteService} from "../../services/sante/sante.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {ToastService, ToastType} from "../../services/toast/toast.service";
+import {MatFormField} from "@angular/material/form-field";
 
 @Component({
   selector: 'app-create-sante-popin',
   standalone: true,
   imports: [
+    MatFormField,
     MatButton,
     MatInput,
     MatLabel,

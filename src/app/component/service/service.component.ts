@@ -1,14 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {Service} from "../../models/Service.model";
 import {ZooServiceService} from "../../services/zooService/zoo-service.service";
-import {MatCardContent, MatCardHeader} from "@angular/material/card";
+import {MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
 
 @Component({
   selector: 'app-service',
   standalone: true,
   imports: [
     MatCardHeader,
-    MatCardContent
+    MatCardContent,
+    MatCardTitle
   ],
   templateUrl: './service.component.html',
   styleUrl: './service.component.css'

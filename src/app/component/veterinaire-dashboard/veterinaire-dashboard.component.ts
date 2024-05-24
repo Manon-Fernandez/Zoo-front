@@ -15,14 +15,12 @@ import {
 import {MatTab} from "@angular/material/tabs";
 import {MatTooltip} from "@angular/material/tooltip";
 import {MatDialog} from "@angular/material/dialog";
-import {CreateNourriPopinComponent} from "../create-nourri-popin/create-nourri-popin.component";
 import {Mode} from "../admin-dashboard/admin-dashboard.component";
 import {Nourri} from "../../models/Nourri.model";
 import {PopinConfirmationComponent} from "../popin-confirmation/popin-confirmation.component";
 import {Sante} from "../../models/Sante";
 import {SanteService} from "../../services/sante/sante.service";
 import {CreateSantePopinComponent} from "../create-sante-popin/create-sante-popin.component";
-import {UtilisateurService} from "../../services/utilisateur/utilisateur.service";
 import {AuthService} from "../../services/auth/auth.service";
 
 @Component({
@@ -43,7 +41,7 @@ import {AuthService} from "../../services/auth/auth.service";
     MatTable,
     SlicePipe,
     MatTooltip,
-    MatHeaderCellDef
+    MatHeaderCellDef,
   ],
   templateUrl: './veterinaire-dashboard.component.html',
   styleUrl: './veterinaire-dashboard.component.css'

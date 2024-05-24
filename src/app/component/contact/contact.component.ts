@@ -1,17 +1,19 @@
-import {Component, OnInit} from '@angular/core';
+
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {ToastService, ToastType} from "../../services/toast/toast.service";
 import {Contact} from "../../models/Contact.model";
 import {ContactService} from "../../services/contact/contact.service";
-import {MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatButton} from "@angular/material/button";
+import {Component} from "@angular/core";
+import {MatFormField, MatLabel} from "@angular/material/form-field";
 
 @Component({
   selector: 'app-contact',
   standalone: true,
   imports: [
+    MatFormField,
     ReactiveFormsModule,
     MatLabel,
     MatInput,

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {MatDialogRef, MatDialogTitle} from "@angular/material/dialog";
+import {MatDialogActions, MatDialogContent, MatDialogRef, MatDialogTitle} from "@angular/material/dialog";
 import {MatButton} from "@angular/material/button";
 
 @Component({
@@ -7,6 +7,8 @@ import {MatButton} from "@angular/material/button";
   standalone: true,
   imports: [
     MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
     MatButton
   ],
   templateUrl: './popin-confirmation.component.html',
