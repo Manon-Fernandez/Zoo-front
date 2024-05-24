@@ -24,7 +24,7 @@ import {MatFormField} from "@angular/material/form-field";
 })
 export class CreateSantePopinComponent {
 
-  santeForm: FormGroup;
+  santeForm! : FormGroup;
 
   @Output()
   onSubmit: EventEmitter<Sante>;

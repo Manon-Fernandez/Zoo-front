@@ -24,7 +24,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 })
 export class CreateNourriPopinComponent {
 
-  nourriForm: FormGroup;
+  nourriForm! : FormGroup;
   mode: Mode;
   id : number = Object.create(null);
 
