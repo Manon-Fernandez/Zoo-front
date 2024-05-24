@@ -4,6 +4,7 @@ import {HabitatService} from "../../services/habitat/habitat.service";
 import {MatButton} from "@angular/material/button";
 import {MatCard, MatCardActions, MatCardHeader, MatCardTitle} from "@angular/material/card";
 import {MatDialog} from "@angular/material/dialog";
+import {DetailPopinComponent} from "../detail-popin/detail-popin.component";
 
 @Component({
   selector: 'app-habitat',
