@@ -1,0 +1,70 @@
+<div class="container-fluid popin-formulaire" fxLayout="column" fxLayoutGap="20px">
+  <ng-container *ngIf="isVeterinaire">
+  <h1 fxFlex>Bienvenue dans l'espace veterinaire</h1>
+
+  <mat-tab label="Gérer les comptes rendus">
+    <button mat-raised-button style="margin-bottom: 2em;margin-top:1em;" (click)="createSante()">Ajouter un compte rendu</button>
+
+    <table  *ngIf="santeList.length > 0" mat-table [dataSource]="(santeList | slice: low : highValue)" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="prenom">
+        <th mat-header-cell *matHeaderCellDef>prénom</th>
+        <td mat-cell *matCellDef="let element">{{element.prenom}}</td>
+      </ng-container>
+      <ng-container matColumnDef="race">
+        <th mat-header-cell *matHeaderCellDef>race</th>
+        <td mat-cell *matCellDef="let element">{{element.race}}</td>
+      </ng-container>
+      <ng-container matColumnDef="etat_animal">
+        <th mat-header-cell *matHeaderCellDef>etat_animal</th>
+        <td mat-cell *matCellDef="let element">{{element.etat_animal}}</td>
+      </ng-container>
+      <ng-container matColumnDef="nourriture">
+        <th mat-header-cell *matHeaderCellDef>nourriture</th>
+        <td mat-cell *matCellDef="let element">{{element.nourriture}}</td>
+      </ng-container>
+      <ng-container matColumnDef="grammage">
+        <th mat-header-cell *matHeaderCellDef>grammage</th>
+        <td mat-cell *matCellDef="let element">{{element.grammage}}</td>
+      </ng-container>
+      <ng-container matColumnDef="date_passage">
+        <th mat-header-cell *matHeaderCellDef>date_passage</th>
+        <td mat-cell *matCellDef="let element">{{element.date_passage}}</td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>action</th>
+        <td mat-cell *matCellDef="let element">
+          <a [matTooltip]="editer" (click)="editSante(element)"><i class="fa fa-edit"></i></a>
+          <a style="margin-left:2em;"[matTooltip]="suppression" (click)="removeSante(element)"><i class="fa fa-remove"></i></a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsSante"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsSante;"></tr>
+    </table>
+  </mat-tab>
+
+  <mat-tab label="Consulter le nourrissage">
+    <table  *ngIf="nourriList.length > 0" mat-table [dataSource]="(nourriList | slice: low : highValue)" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="prenom">
+        <th mat-header-cell *matHeaderCellDef>prénom</th>
+        <td mat-cell *matCellDef="let element">{{element.prenom}}</td>
+      </ng-container>
+      <ng-container matColumnDef="race">
+        <th mat-header-cell *matHeaderCellDef>race</th>
+        <td mat-cell *matCellDef="let element">{{element.race}}</td>
+      </ng-container>
+      <ng-container matColumnDef="date_nourriture">
+        <th mat-header-cell *matHeaderCellDef>date_nourriture</th>
+        <td mat-cell *matCellDef="let element">{{element.date_nourriture}}</td>
+      </ng-container>
+      <ng-container matColumnDef="grammage_nourriture">
+        <th mat-header-cell *matHeaderCellDef>grammage_nourriture</th>
+        <td mat-cell *matCellDef="let element">{{element.grammage_nourriture}}</td>
+      </ng-container>
+    </table>
+  </mat-tab>
+  </ng-container>
+
+</div>

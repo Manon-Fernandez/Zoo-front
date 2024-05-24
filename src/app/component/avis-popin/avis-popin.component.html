@@ -1,0 +1,16 @@
+<div class="poppin-formulaire">
+  <h2>Partagez votre expérience avec nous</h2>
+  <form class="formulaire" [formGroup]="avisForm" (ngSubmit)="onSubmit()" >
+    <mat-form-field appearance="fill">
+      <mat-label>Pseudo</mat-label>
+      <input matInput required formControlName="pseudo">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Commentaire</mat-label>
+      <textarea matInput required formControlName="commentaire"></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button color="basic" type="submit" [disabled]="!avisForm.valid">Envoyer</button>
+  </form>
+</div>

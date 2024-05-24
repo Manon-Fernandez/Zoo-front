@@ -1,0 +1,21 @@
+<footer>
+  <div class="container-fluid container-footer">
+    <div class="footer-content" *ngIf="horaires.length > 0">
+      <div class="tableau-footer">
+        <table class="table table-responsive text-light">
+          <tr>
+            <th>Jour</th>
+            <th>Horaires</th>
+          </tr>
+          <tr *ngFor="let horaire of horaires">
+            <td>{{horaire.jour}}</td>
+            <td>{{getHeureOuvertureFermeture(horaire)}}</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <p class="copyright">© Zoo Arcadia - Tous droits réservés</p>
+      </div>
+    </div>
+  </div>
+</footer>

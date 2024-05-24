@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <h1>{{getTitle()}}</h1>
+  <form class="formulaire" [formGroup]="habitatForm" (ngSubmit)="submit()">
+    <mat-form-field>
+      <mat-label>Nom</mat-label>
+      <input matInput type="text" formControlName="nom" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput required formControlName="description"></textarea>
+    </mat-form-field>
+
+    <div class="action">
+      <button mat-raised-button color="basic" type="submit" [disabled]="!habitatForm.valid">{{getSubmitButton()}}</button>
+      <button mat-raised-button type="reset" (click)="closePopin()">Annuler</button>
+    </div>
+  </form>
+</div>

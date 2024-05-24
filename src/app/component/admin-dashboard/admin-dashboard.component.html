@@ -1,0 +1,202 @@
+<div class="container-fluid popin-formulaire" fxLayout="column" fxLayoutGap="20px">
+  <h1 fxFlex>Bienvenue dans l'espace administrateur</h1>
+
+  <mat-tab-group>
+    <mat-tab label="Gérer le personnel">
+      <button mat-raised-button (click)="openPopupPersonnel()" style="margin-bottom: 2em;margin-top:1em;">Créer un compte</button>
+      <ng-container *ngIf="personnel.length > 0">
+        <table mat-table [dataSource]="(personnel | slice: low : highValue)" class="mat-elevation-z8">
+
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>email</th>
+            <td mat-cell *matCellDef="let element">{{element.email}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>action</th>
+            <td mat-cell *matCellDef="let element">
+              <a [matTooltip]="editer" (click)="editPersonnel(element)"><i class="fa fa-edit"></i></a>
+              <a [matTooltip]="suppression" (click)="removePersonnel(element)" style="margin-left: 1em;"><i class="fa-solid fa-remove fa-lg" style="color: red;"></i></a>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsPersonnel"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumnsPersonnel;"></tr>
+        </table>
+      </ng-container>
+    </mat-tab>
+
+    <mat-tab label="Gérer les services">
+      <button mat-raised-button style="margin-bottom: 2em;margin-top:1em;" (click)="createServices()">Créer un service</button>
+      <table *ngIf="services.length > 0" mat-table [dataSource]="(services | slice: low : highValue)" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="nom">
+          <th mat-header-cell *matHeaderCellDef>nom</th>
+          <td mat-cell *matCellDef="let element">{{element.nom}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef>description</th>
+          <td mat-cell *matCellDef="let element">{{element.description}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>action</th>
+          <td mat-cell *matCellDef="let element">
+            <a [matTooltip]="editer" (click)="editService(element)"><i class="fa fa-edit"></i></a>
+            <a [matTooltip]="suppression" (click)="removeService(element)" style="margin-left: 1em;"><i class="fa-solid fa-remove fa-lg" style="color: red;"></i></a>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsService"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsService;"></tr>
+      </table>
+      <div *ngIf="services.length == 0">
+        <h2>Pas de service existant.</h2>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Gérer les horaires">
+      <button mat-raised-button style="margin-bottom: 2em;margin-top:1em;" (click)="createHoraire()">Créer un horaire</button>
+      <table *ngIf="horaires.length > 0" mat-table [dataSource]="(horaires | slice: low : highValue)" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="jour">
+          <th mat-header-cell *matHeaderCellDef>jour</th>
+          <td mat-cell *matCellDef="let element">{{element.jour}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="heure_ouverture">
+          <th mat-header-cell *matHeaderCellDef>matin</th>
+          <td mat-cell *matCellDef="let element">{{element.heure_ouverture}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="heure_fermeture">
+          <th mat-header-cell *matHeaderCellDef>après-midi</th>
+          <td mat-cell *matCellDef="let element">{{element.heure_fermeture}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>action</th>
+          <td mat-cell *matCellDef="let element">
+            <a [matTooltip]="editer" (click)="editHoraire(element)"><i class="fa fa-edit"></i></a>
+            <a [matTooltip]="suppression" (click)="removeHoraire(element)" style="margin-left: 1em;"><i class="fa-solid fa-remove fa-lg" style="color: red;"></i></a>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsHoraire"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsHoraire;"></tr>
+      </table>
+      <div *ngIf="horaires.length == 0">
+        <h2>Pas d'horaire existant.</h2>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Gérer les habitats">
+      <button mat-raised-button style="margin-bottom: 2em;margin-top:1em;" (click)="createHabitat()">Créer un habitat</button>
+      <table *ngIf="habitat.length > 0" mat-table [dataSource]="(habitat | slice: low : highValue)" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="nom">
+          <th mat-header-cell *matHeaderCellDef>nom</th>
+          <td mat-cell *matCellDef="let element">{{element.nom}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef>description</th>
+          <td mat-cell *matCellDef="let element">{{element.description}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>action</th>
+          <td mat-cell *matCellDef="let element">
+            <a [matTooltip]="editer" (click)="editHabitat(element)"><i class="fa fa-edit"></i></a>
+            <a [matTooltip]="suppression" (click)="removeHabitat(element)" style="margin-left: 1em;"><i class="fa-solid fa-remove fa-lg" style="color: red;"></i></a>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsHabitat"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsHabitat;"></tr>
+      </table>
+      <div *ngIf="habitat.length == 0">
+        <h2>Pas d'habitat existant.</h2>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Gérer les animaux">
+      <button mat-raised-button style="margin-bottom: 2em;margin-top:1em;" (click)="createAnimal()">Créer un animal</button>
+      <table *ngIf="animal.length > 0" mat-table [dataSource]="(animal | slice: low : highValue)" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="prenom">
+          <th mat-header-cell *matHeaderCellDef>prenom</th>
+          <td mat-cell *matCellDef="let element">{{element.prenom}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="race">
+          <th mat-header-cell *matHeaderCellDef>race</th>
+          <td mat-cell *matCellDef="let element">{{element.race}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>action</th>
+          <td mat-cell *matCellDef="let element">
+            <a [matTooltip]="editer" (click)="editAnimal(element)"><i class="fa fa-edit"></i></a>
+            <a [matTooltip]="suppression" (click)="removeAnimal(element)" style="margin-left: 1em;"><i class="fa-solid fa-remove fa-lg" style="color: red;"></i></a>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsAnimal"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsAnimal;"></tr>
+      </table>
+      <div *ngIf="animal.length == 0">
+        <h2>Pas d'animal existant.</h2>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Consulter les comptes rendus">
+      <table *ngIf="santeList.length > 0" mat-table [dataSource]="(santeList | slice: low : highValue)" class="mat-elevation-z8">
+
+        <mat-form-field>
+          <mat-label>Choisir une date</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Choisir l'animal</mat-label>
+          <mat-select>
+            @for (animal of animal; track animal) {
+              <mat-option [value]="animal.prenom">{{animal.prenom}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <ng-container matColumnDef="prenom">
+          <th mat-header-cell *matHeaderCellDef>prénom</th>
+          <td mat-cell *matCellDef="let element">{{element.prenom}}</td>
+        </ng-container>
+        <ng-container matColumnDef="race">
+          <th mat-header-cell *matHeaderCellDef>race</th>
+          <td mat-cell *matCellDef="let element">{{element.race}}</td>
+        </ng-container>
+        <ng-container matColumnDef="etat_animal">
+          <th mat-header-cell *matHeaderCellDef>etat_animal</th>
+          <td mat-cell *matCellDef="let element">{{element.etat_animal}}</td>
+        </ng-container>
+        <ng-container matColumnDef="nourriture">
+          <th mat-header-cell *matHeaderCellDef>nourriture</th>
+          <td mat-cell *matCellDef="let element">{{element.nourriture}}</td>
+        </ng-container>
+        <ng-container matColumnDef="grammage">
+          <th mat-header-cell *matHeaderCellDef>grammage</th>
+          <td mat-cell *matCellDef="let element">{{element.grammage}}</td>
+        </ng-container>
+        <ng-container matColumnDef="date_passage">
+          <th mat-header-cell *matHeaderCellDef>date_passage</th>
+          <td mat-cell *matCellDef="let element">{{element.date_passage}}</td>
+        </ng-container>
+      </table>
+    </mat-tab>
+
+  </mat-tab-group>
+</div>

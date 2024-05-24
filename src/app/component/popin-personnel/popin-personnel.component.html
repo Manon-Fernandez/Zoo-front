@@ -1,0 +1,23 @@
+<div class="poppin-formulaire">
+  <h1>{{getTitle()}}</h1>
+  <form class="formulaire" [formGroup]="signupForm" (ngSubmit)="submit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input  matInput formControlName="email" type="email">
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill">
+      <mat-label>Mot de passe</mat-label>
+      <input (change)="checkForm()" matInput formControlName="password" type="password">
+      <mat-error *ngIf="signupForm.get('password')?.errors?.['pattern']">
+        Le mot de passe doit contenir au moins 10 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.
+      </mat-error>
+      <mat-error *ngIf="signupForm.get('password')?.errors?.['required']">
+        Le mot de passe est obligatoire.
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="basic" style="margin-bottom: 2em;" type="submit" [disabled]="!signupForm.valid">{{getButton()}}</button>
+  </form>
+</div>

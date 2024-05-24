@@ -1,0 +1,25 @@
+<h1 class="titre-contact">Nous contacter</h1>
+
+<h2 class="titre-formulaire">Formulaire de contact</h2>
+
+<form class="formulaire" [formGroup]="contactForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="start center">
+  <mat-form-field>
+    <mat-label>Titre</mat-label>
+    <input matInput formControlName="title" placeholder="Entrez le titre" value="{{getTitle()}}">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="mail" placeholder="Entrez votre email">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description" placeholder="Entrez la description"></textarea>
+  </mat-form-field>
+  <!-- Le reste du formulaire -->
+  <div class="container-fluid button-formulaire">
+    <button mat-raised-button color="basic" type="submit">Envoyer</button>
+  </div>
+</form>
+

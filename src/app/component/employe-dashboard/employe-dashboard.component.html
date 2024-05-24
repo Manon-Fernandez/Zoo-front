@@ -1,0 +1,93 @@
+<div class="container-fluid poppin-formulaire" fxLayout="column" fxLayoutGap="20px">
+  <ng-container *ngIf="isEmploye">
+  <h1 fxFlex>Bienvenue dans l'espace employé !</h1>
+
+  <mat-tab-group fxFlex>
+
+    <mat-tab label="Gérer les avis">
+      <div fxLayout="column" fxLayoutGap="20px">
+        <table *ngIf="lesAvis.length > 0" mat-table [dataSource]="(lesAvis | slice: low : highValue)" class="mat-elevation-z8">
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>action</th>
+            <td mat-cell *matCellDef="let element">
+              <a *ngIf="checkIfAvisIsSubmitted(element)" [matTooltip]="validation" (click)="validAvis(element)"><i class="fa-solid fa-check fa-lg"></i></a>
+              <a [matTooltip]="suppression" (click)="deleteAvis(element)"><i class="fa-solid fa-remove fa-lg"></i></a>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <div *ngIf="lesAvis.length == 0">
+          <h2>Aucun avis pour le moment !</h2>
+        </div></div>
+    </mat-tab>
+
+    <mat-tab label="Gérer les services">
+      <button mat-raised-button style="margin-bottom: 2em;margin-top:1em;" (click)="createService()">Créer un service</button>
+      <table *ngIf="service.length > 0" mat-table [dataSource]="(service | slice: low : highValue)" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="nom">
+          <th mat-header-cell *matHeaderCellDef>nom</th>
+          <td mat-cell *matCellDef="let element">{{element.nom}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef>description</th>
+          <td mat-cell *matCellDef="let element">{{element.description}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>action</th>
+          <td mat-cell *matCellDef="let element">
+            <a [matTooltip]="editer" (click)="editService(element)"><i class="fa fa-edit"></i></a>
+            <a [matTooltip]="suppression" (click)="removeService(element)"><i class="fa-solid fa-remove fa-lg"></i></a>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsService"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsService;"></tr>
+      </table>
+      <div *ngIf="service.length == 0">
+        <h2>Pas de service existant.</h2>
+      </div>
+
+    </mat-tab>
+
+    <mat-tab label="Gérer l'alimentation">
+      <button mat-raised-button style="margin-bottom: 2em;margin-top:1em;" (click)="createNourri()">Ajouter un passage de nourriture</button>
+
+      <table  *ngIf="nourriList.length > 0" mat-table [dataSource]="(nourriList | slice: low : highValue)" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="prenom">
+          <th mat-header-cell *matHeaderCellDef>prénom</th>
+          <td mat-cell *matCellDef="let element">{{element.prenom}}</td>
+        </ng-container>
+        <ng-container matColumnDef="race">
+          <th mat-header-cell *matHeaderCellDef>race</th>
+          <td mat-cell *matCellDef="let element">{{element.race}}</td>
+        </ng-container>
+        <ng-container matColumnDef="date_nourriture">
+          <th mat-header-cell *matHeaderCellDef>date_nourriture</th>
+          <td mat-cell *matCellDef="let element">{{element.date_nourriture}}</td>
+        </ng-container>
+        <ng-container matColumnDef="grammage_nourriture">
+          <th mat-header-cell *matHeaderCellDef>grammage_nourriture</th>
+          <td mat-cell *matCellDef="let element">{{element.grammage_nourriture}}</td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>action</th>
+          <td mat-cell *matCellDef="let element">
+            <a [matTooltip]="editer" (click)="editNourri(element)"><i class="fa fa-edit"></i></a>
+            <a style="margin-left:2em;"[matTooltip]="suppression" (click)="removeNourri(element)"><i class="fa fa-remove"></i></a>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsNourri"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsNourri;"></tr>
+      </table>
+    </mat-tab>
+
+  </mat-tab-group>
+  </ng-container>
+</div>

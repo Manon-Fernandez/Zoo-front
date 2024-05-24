@@ -1,0 +1,30 @@
+<mat-toolbar color="basic" class="header">
+  <mat-toolbar-row>
+    <span class="spacer"></span>
+      <button mat-button *ngIf="isHandset$ | async" (click)="changeBurgerMenu()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    <div *ngIf="(isHandset$ | async) === false">
+      <button mat-button routerLink="home" routerLinkActive="active">Accueil</button>
+      <button mat-button routerLink="habitat" routerLinkActive="active">Habitat</button>
+      <button mat-button routerLink="service" routerLinkActive="active">Service</button>
+      <button mat-button routerLink="contact" routerLinkActive="contact">Contact</button>
+      <button mat-button routerLink="admin" *ngIf="isAdmin()" routerLinkActive="active">Dashboard</button>
+      <button mat-button routerLink="employe" *ngIf="isEmploye()" routerLinkActive="active">Dashboard</button>
+      <button mat-button routerLink="veterinaire" *ngIf="isVeterinaire()" routerLinkActive="active">Dashboard</button>
+      <button mat-button routerLink="home" (click)="deconnexion()" *ngIf="isConnected()" routerLinkActive="active">Deconnexion</button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div *ngIf="openBurgerMenu" class="burger-menu">
+  <mat-nav-list>
+    <a mat-list-item routerLink="home" (click)="changeBurgerMenu()" routerLinkActive="active">Accueil</a>
+    <a mat-list-item routerLink="habitat" (click)="changeBurgerMenu()" routerLinkActive="active">Habitat</a>
+    <a mat-list-item routerLink="service" (click)="changeBurgerMenu()" routerLinkActive="active">Service</a>
+    <a mat-list-item routerLink="contact" (click)="changeBurgerMenu()" routerLinkActive="active">Contact</a>
+    <a mat-list-item routerLink="admin" (click)="changeBurgerMenu()" *ngIf="isAdmin()" routerLinkActive="active">Dashboard</a>
+    <a mat-list-item routerLink="employe" (click)="changeBurgerMenu()" *ngIf="isEmploye()" routerLinkActive="active">Dashboard</a>
+    <a mat-list-item routerLink="veterinaire" (click)="changeBurgerMenu()" *ngIf="isVeterinaire()" routerLinkActive="active">Dashboard</a>
+    <a mat-list-item routerLink="home" (click)="deconnexion()" *ngIf="isConnected()" routerLinkActive="active">Deconnexion</a>
+  </mat-nav-list>
+</div>

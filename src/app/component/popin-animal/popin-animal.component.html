@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <h1>{{getTitle()}}</h1>
+  <form class="formulaire" [formGroup]="animalForm" (ngSubmit)="submit()">
+    <mat-form-field>
+      <mat-label>Prénom</mat-label>
+      <input matInput type="text" formControlName="prenom" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Race</mat-label>
+      <textarea matInput required formControlName="race"></textarea>
+    </mat-form-field>
+
+    <div class="action">
+      <button mat-raised-button color="basic" type="submit" [disabled]="!animalForm.valid">{{getSubmitButton()}}</button>
+      <button mat-raised-button type="reset" (click)="closePopin()">Annuler</button>
+    </div>
+  </form>
+</div>

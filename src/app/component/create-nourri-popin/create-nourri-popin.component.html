@@ -1,0 +1,29 @@
+<div class="container-fluid popin-formulaire">
+  <form class="formulaire" [formGroup]="nourriForm" (ngSubmit)="submit()">
+
+    <mat-form-field>
+      <mat-label>Prénom de l'animal</mat-label>
+      <input matInput type="text" formControlName="prenom" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Race de l'animal</mat-label>
+      <input matInput type="text" formControlName="race" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Date du nourrissage</mat-label>
+      <input matInput type="text" formControlName="date_nourriture" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Grammage</mat-label>
+      <input matInput type="number" formControlName="grammage_nourriture" required>
+    </mat-form-field>
+  </form>
+
+  <div class="action">
+    <button mat-raised-button color="basic" type="submit" [disabled]="!nourriForm.valid">{{getSubmitButton()}}</button>
+    <button mat-raised-button type="reset" (click)="closePopin()">Annuler</button>
+  </div>
+</div>

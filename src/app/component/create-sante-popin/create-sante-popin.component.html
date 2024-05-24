@@ -1,0 +1,39 @@
+<div class="container-fluid popin-formulaire">
+  <form class="formulaire" [formGroup]="santeForm" (ngSubmit)="submit()">
+
+    <mat-form-field>
+      <mat-label>Prénom de l'animal</mat-label>
+      <input matInput type="text" formControlName="prenom" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Race de l'animal</mat-label>
+      <input matInput type="text" formControlName="race" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Etat de l'animal</mat-label>
+      <input matInput type="text" formControlName="etat_animal" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Nourriture</mat-label>
+      <input matInput type="number" formControlName="nourriture" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Grammage</mat-label>
+      <input matInput type="number" formControlName="grammage" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Date de passage</mat-label>
+      <input matInput type="number" formControlName="date_passage" required>
+    </mat-form-field>
+  </form>
+
+  <div class="action">
+    <button mat-raised-button color="basic" type="submit" [disabled]="!santeForm.valid">{{getSubmitButton()}}</button>
+    <button mat-raised-button type="reset" (click)="closePopin()">Annuler</button>
+  </div>
+</div>

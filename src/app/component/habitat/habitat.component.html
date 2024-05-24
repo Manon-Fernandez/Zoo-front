@@ -1,0 +1,16 @@
+<div class="container-fluid" fxLayout="column" fxLayoutAlign="center center">
+
+  <h1 class="titre-habitat">Les habitats présents à Arcadia</h1>
+
+  <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="15px" fxLayoutAlign="center center">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>{{card.nom}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-actions>
+        <div class="container-fluid button-detail">
+          <button mat-raised-button color="basic" (click)="openDialog(habitat)">Détails</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
